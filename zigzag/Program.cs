@@ -6,60 +6,52 @@ namespace zigzag
     {
         public static void Main(string[] args)
         {
-            //var value = int.Parse(Console.ReadLine());
-            Console.WriteLine(GenerateString(77, "A".ToCharArray()).ToLower());
-
-            //Console.WriteLine(Calculate(new[] {'A', 'O', 'A', 'Z'}, 'B'));
-
-            //var value = 77;
-            //var curVal = 0;
-            //var currentString = "aoazb";
-            //var curStr = "AA";
-            //while (curVal != value && curStr.Length < 5)
-            //{
-            //    curStr = NextString(curStr);
-            //    Console.WriteLine(curStr);
-            //    curVal = Calculate(curStr);
-            //}
-            //Console.WriteLine(curStr.ToLower());
-
-            //Console.WriteLine((char)('A'+2));
+            var value = int.Parse(Console.ReadLine());
+            var length = CalculateMinLength(value);
+            var current = GenerateNew(length);
+            while (Calculate(current) != value)
+            {
+                current = Next(current);
+            }
+            Console.WriteLine(new string(current).ToLower());
+        }
+        private static char[] Next(char[] arr)
+        {
+            var index = arr.Length - 1;
+            while (arr[index] == 'Z')
+            {
+                arr[index] = 'A';
+                --index;
+            }
+            arr[index] = (arr[index] == 'Z') ? 'A' : (char)(arr[index] + 1);
+            return arr;
         }
 
-        public static string GenerateString(int value, char[] arr)
+        private static char IncrementChar(char c)
         {
-            for (var c = 65; c <= 90; c++)
-            {
-                if (Calculate(arr, (char)c) == value)
-                {
-                    return new string(arr) + (char)c;
-                }
-            }
-            if (arr.Length < 4)
-            {
-                return GenerateString(value, (new string(arr) + 'A').ToCharArray());    
-            }
-            return "";
+            return (c == 'Z') ? 'A' : (char) (c + 1);
         }
 
-        public static string NextString(string str)
+        private static int CalculateMinLength(int value)
         {
-            var arr = str.ToCharArray();
-            var last = arr[arr.Length - 1];
-            if (last != 'Z')
-            {
-                arr[arr.Length - 1] = (char)(last + 1);
-                return new string(arr);
-            }
-            arr[arr.Length - 1] = 'A';
-            return new string(arr) + 'A';
+            if (value <= 25) return 2;
+            var quote = value/25;
+            var rem = value%25;
+            if (rem == 0) return quote + 1;
+            return quote + 2;
         }
 
-        public static int Calculate(char[] carr, int c)
+        private static char[] GenerateNew(int length)
         {
+            var arr = new char[length];
+            for (var i = 0; i < length; i++) arr[i] = 'A';
+            return arr;
+        }
+
+        public static int Calculate(char[] carr)
+        {
+            var str = new string(carr);
             var sum = 0;
-            var str = new string(carr) + (char)c;
-            Console.WriteLine("Calculating {0}", str);
             for (var i = 0; i < str.Length - 1; i++)
             {
                 var tmp = (str[i] - 64) - (str[i + 1] - 64);

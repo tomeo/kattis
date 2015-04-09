@@ -52,6 +52,7 @@
     <None Include="input\zigzag-002.in" />
     <None Include="input\zigzag-003.ans" />
     <None Include="input\zigzag-003.in" />
+    <None Include="input\zigzag-004.in" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
