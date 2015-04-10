@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace zigzag
 {
@@ -6,14 +7,21 @@ namespace zigzag
     {
         public static void Main(string[] args)
         {
-            var value = int.Parse(Console.ReadLine());
-            var length = CalculateMinLength(value);
-            var current = GenerateNew(length);
-            while (Calculate(current) != value)
+            var sw = new Stopwatch();
+            //var value = int.Parse(Console.ReadLine());
+            sw.Start();
+            for (var value = 1; value <= 500; value++)
             {
-                current = Next(current);
+                var length = CalculateMinLength(value);
+                var current = GenerateNew(length);
+                while (Calculate(current) != value)
+                {
+                    current = Next(current);
+                }
+                Console.WriteLine("{0} = {1}", value, new string(current).ToLower());
             }
-            Console.WriteLine(new string(current).ToLower());
+            sw.Stop();
+            Console.WriteLine("Elapsed={0}", sw.Elapsed);
         }
         private static char[] Next(char[] arr)
         {
@@ -25,11 +33,6 @@ namespace zigzag
             }
             arr[index] = (arr[index] == 'Z') ? 'A' : (char)(arr[index] + 1);
             return arr;
-        }
-
-        private static char IncrementChar(char c)
-        {
-            return (c == 'Z') ? 'A' : (char) (c + 1);
         }
 
         private static int CalculateMinLength(int value)
@@ -44,7 +47,13 @@ namespace zigzag
         private static char[] GenerateNew(int length)
         {
             var arr = new char[length];
-            for (var i = 0; i < length; i++) arr[i] = 'A';
+            var current = 'Z';
+            for (var i = arr.Length-1; i > 0; i--)
+            {
+                arr[i] = current;
+                current = current == 'Z' ? 'A' : 'Z';
+            }
+            arr[0] = 'A';
             return arr;
         }
 
