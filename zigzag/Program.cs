@@ -1,38 +1,63 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace zigzag
 {
     public class Program
     {
-        public static void Main(string[] args)
+       public static void Main(string[] args)
         {
             var sw = new Stopwatch();
-            //var value = int.Parse(Console.ReadLine());
             sw.Start();
-            for (var value = 1; value <= 500; value++)
-            {
-                var length = CalculateMinLength(value);
-                var current = GenerateNew(length);
-                while (Calculate(current) != value)
-                {
-                    current = Next(current);
-                }
-                Console.WriteLine("{0} = {1}", value, new string(current).ToLower());
-            }
+            Console.WriteLine(new string(Solve()));
             sw.Stop();
             Console.WriteLine("Elapsed={0}", sw.Elapsed);
         }
-        private static char[] Next(char[] arr)
+
+        public static char[] Solve()
         {
-            var index = arr.Length - 1;
-            while (arr[index] == 'Z')
+            var v = 14;
+            Console.WriteLine("v = {0}", v);
+            // Solution length
+            var l = CalculateMinLength(v);
+            Console.WriteLine("l = {0}", l);
+            var solution = new char[l];
+            
+            // Number of times 25 goes in v
+            var q = v / 25;
+            Console.WriteLine("q = {0}", q);
+            // The remainder after dividing with 25
+            var r = v % 25;
+            Console.WriteLine("r = {0}", r);
+            if (r == 0)
             {
-                arr[index] = 'A';
-                --index;
+                for (var i = 0; i < solution.Length; i++)
+                    solution[i] = (i % 2 == 0) ? 'A' : 'Z';
+                return solution;
             }
-            arr[index] = (arr[index] == 'Z') ? 'A' : (char)(arr[index] + 1);
-            return arr;
+
+            // Prepare solution
+            solution[0] = 'A';
+            for (var i = 2; i < solution.Length; i++)
+            {
+                solution[i] = (i % 2 == 0) ? 'A' : 'Z';
+            }
+
+            // Min number of 25s in solution
+            var t = (v % 2 == 0) ? l - q : l - q - 1;
+            Console.WriteLine("t = {0}", t);
+
+            if (v % 2 == 0)
+            {
+                var d = (v - 25 * t) % 26;
+                solution[1] = (char)('A' + d / 2);
+            }
+            else
+            {
+
+            }
+            return solution;
         }
 
         private static int CalculateMinLength(int value)
