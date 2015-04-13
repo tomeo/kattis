@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hello", "hello\hello.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dicegame", "dicegame\dicegame.csproj", "{C367E6E3-7A85-436A-8906-B7BEE55257D5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mixedfractions", "mixedfractions\mixedfractions.csproj", "{866BDB2B-4815-4657-9C8C-62F92343D55C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{C367E6E3-7A85-436A-8906-B7BEE55257D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C367E6E3-7A85-436A-8906-B7BEE55257D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C367E6E3-7A85-436A-8906-B7BEE55257D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{866BDB2B-4815-4657-9C8C-62F92343D55C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{866BDB2B-4815-4657-9C8C-62F92343D55C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{866BDB2B-4815-4657-9C8C-62F92343D55C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{866BDB2B-4815-4657-9C8C-62F92343D55C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
