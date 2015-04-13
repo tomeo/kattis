@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "flipfive", "flipfive\flipfi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zigzag", "zigzag\zigzag.csproj", "{444351C2-10E6-407C-9CE3-2B432173EC48}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hello", "hello\hello.csproj", "{5C8E0CC7-60A2-4F2D-AFC9-8EBD6D2FB981}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{444351C2-10E6-407C-9CE3-2B432173EC48}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{444351C2-10E6-407C-9CE3-2B432173EC48}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{444351C2-10E6-407C-9CE3-2B432173EC48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C8E0CC7-60A2-4F2D-AFC9-8EBD6D2FB981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C8E0CC7-60A2-4F2D-AFC9-8EBD6D2FB981}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C8E0CC7-60A2-4F2D-AFC9-8EBD6D2FB981}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C8E0CC7-60A2-4F2D-AFC9-8EBD6D2FB981}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
