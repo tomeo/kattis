@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "carrots", "carrots\carrots.csproj", "{59C44ECF-633F-4670-BAD8-95F74DF0251B}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dicegame", "dicegame\dicegame.csproj", "{C367E6E3-7A85-436A-8906-B7BEE55257D5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mixedfractions", "mixedfractions\mixedfractions.csproj", "{866BDB2B-4815-4657-9C8C-62F92343D55C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "reversebinary", "reversebinary\reversebinary.csproj", "{B028B778-6BF7-4CC4-AB56-5750E8542840}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{866BDB2B-4815-4657-9C8C-62F92343D55C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{866BDB2B-4815-4657-9C8C-62F92343D55C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{866BDB2B-4815-4657-9C8C-62F92343D55C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B028B778-6BF7-4CC4-AB56-5750E8542840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B028B778-6BF7-4CC4-AB56-5750E8542840}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B028B778-6BF7-4CC4-AB56-5750E8542840}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B028B778-6BF7-4CC4-AB56-5750E8542840}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
