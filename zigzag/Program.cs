@@ -1,62 +1,56 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace zigzag
 {
     public class Program
     {
-       public static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            var sw = new Stopwatch();
-            sw.Start();
-            Console.WriteLine(new string(Solve()));
-            sw.Stop();
-            Console.WriteLine("Elapsed={0}", sw.Elapsed);
+            for (var i = 50; i <= 100; i++)
+            {
+                var sw = new Stopwatch();
+                sw.Start();
+                var solution = new string(Solve(i));
+                Console.WriteLine("{0} = {1}", i, solution.ToLower());
+                sw.Stop();
+                //Console.WriteLine("Elapsed={0}", sw.Elapsed);
+            }
         }
 
-        public static char[] Solve()
+        public static char[] Solve(int v)
         {
-            var v = 14;
-            Console.WriteLine("v = {0}", v);
-            // Solution length
-            var l = CalculateMinLength(v);
-            Console.WriteLine("l = {0}", l);
-            var solution = new char[l];
             
-            // Number of times 25 goes in v
-            var q = v / 25;
-            Console.WriteLine("q = {0}", q);
-            // The remainder after dividing with 25
-            var r = v % 25;
-            Console.WriteLine("r = {0}", r);
+            var l = CalculateMinLength(v);
+            var solution = new char[l];
+            var q = v/25;
+            var r = v%25;
+            var t = (l - 3) > 0 ? l - 3 : 0;
+            var d = v - t * 25;
+            Console.WriteLine(
+                "v = {0} => l = {1}, q = {2}, t = {3}, d = {4}",
+                v,
+                CalculateMinLength(v),
+                q,
+                t,
+                d);
+            if (v <= 26) return new[] { (char)('A' + v - 1) };
             if (r == 0)
             {
                 for (var i = 0; i < solution.Length; i++)
-                    solution[i] = (i % 2 == 0) ? 'A' : 'Z';
+                    solution[i] = (i%2 == 0) ? 'A' : 'Z';
                 return solution;
             }
 
-            // Prepare solution
+            var x = d/2 + d%2;
             solution[0] = 'A';
-            for (var i = 2; i < solution.Length; i++)
-            {
-                solution[i] = (i % 2 == 0) ? 'A' : 'Z';
-            }
+            solution[1] = (char) ('A' + x);
+            var y = d%2;
+            if (y != 0) solution[solution.Length - 1] = (char) ('A' + y);
+            else solution[solution.Length - 1] = 'A';
 
-            // Min number of 25s in solution
-            var t = (v % 2 == 0) ? l - q : l - q - 1;
-            Console.WriteLine("t = {0}", t);
-
-            if (v % 2 == 0)
-            {
-                var d = (v - 25 * t) % 26;
-                solution[1] = (char)('A' + d / 2);
-            }
-            else
-            {
-
-            }
+            Console.WriteLine("x = {0}, y = {1}", x, y);
+            
             return solution;
         }
 
@@ -73,7 +67,7 @@ namespace zigzag
         {
             var arr = new char[length];
             var current = 'Z';
-            for (var i = arr.Length-1; i > 0; i--)
+            for (var i = arr.Length - 1; i > 0; i--)
             {
                 arr[i] = current;
                 current = current == 'Z' ? 'A' : 'Z';
