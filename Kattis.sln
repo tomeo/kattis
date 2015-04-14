@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "carrots", "carrots\carrots.csproj", "{59C44ECF-633F-4670-BAD8-95F74DF0251B}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ladder", "ladder\ladder.csproj", "{3956FFB1-0C10-4FEF-92CF-1D314966D257}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "different", "different\different.csproj", "{5B2E3EDD-BFB0-4F9A-BD2D-37CADBA73DD6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kemija08", "kemija08\kemija08.csproj", "{3E148318-ADBB-487E-839F-D124FBEADEFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{5B2E3EDD-BFB0-4F9A-BD2D-37CADBA73DD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B2E3EDD-BFB0-4F9A-BD2D-37CADBA73DD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B2E3EDD-BFB0-4F9A-BD2D-37CADBA73DD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E148318-ADBB-487E-839F-D124FBEADEFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E148318-ADBB-487E-839F-D124FBEADEFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E148318-ADBB-487E-839F-D124FBEADEFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E148318-ADBB-487E-839F-D124FBEADEFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
