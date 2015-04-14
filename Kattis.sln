@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kemija08", "kemija08\kemija
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "easiest", "easiest\easiest.csproj", "{65BD06B5-2207-4213-B8F6-10B668261A05}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "billiard", "billiard\billiard.csproj", "{FF26B32E-0EF8-4DEC-A765-AAD8026BFAC2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{65BD06B5-2207-4213-B8F6-10B668261A05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65BD06B5-2207-4213-B8F6-10B668261A05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65BD06B5-2207-4213-B8F6-10B668261A05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF26B32E-0EF8-4DEC-A765-AAD8026BFAC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF26B32E-0EF8-4DEC-A765-AAD8026BFAC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF26B32E-0EF8-4DEC-A765-AAD8026BFAC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF26B32E-0EF8-4DEC-A765-AAD8026BFAC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
