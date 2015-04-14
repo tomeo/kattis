@@ -7,14 +7,14 @@ namespace zigzag
     {
         public static void Main(string[] args)
         {
-            for (var i = 1000; i <= 2000; i++)
+            for (var i = 100; i <= 200; i++)
             {
                 var sw = new Stopwatch();
                 sw.Start();
                 var s = Solve(i);
                 Console.WriteLine("{0} = {1}", i, new string(s).ToLower());
                 var c = Calculate(s);
-                if (c != i) Console.WriteLine("ERROR: calculated to {0}", c);
+                if (c != i) Console.WriteLine("ERROR: should be {0}, but calculated to {1}", i, c);
                 sw.Stop();
                 //Console.WriteLine("Elapsed={0}", sw.Elapsed);
             }
@@ -43,7 +43,7 @@ namespace zigzag
                     solution[i] = (i%2 == 0) ? 'A' : 'Z';
                 return solution;
             }
-
+            //Console.WriteLine("d/2 = {0}, d%2={1}", d/2, d%2);
             var x = d/2 + d%2;
             solution[0] = 'A';
             solution[1] = (char) ('A' + x);
@@ -56,8 +56,16 @@ namespace zigzag
             var y = d%2;
             if (y != 0) solution[solution.Length - 1] = (char) ('A' + y);
 
-            //Console.WriteLine("x = {0}, y = {1}", x, y);
-            
+            //Console.WriteLine("v = {0} => x = {1}, y = {2}", v, x, y);
+
+            var c = Calculate(solution);
+            var diff = v - c;
+            //Console.WriteLine("Diff = {0}", diff);
+            if (diff != 0)
+            {
+                solution[solution.Length - 1] = (char) (solution[solution.Length - 1] + diff);
+            }
+
             return solution;
         }
 
@@ -68,19 +76,6 @@ namespace zigzag
             var rem = value%25;
             if (rem == 0) return quote + 1;
             return quote + 2;
-        }
-
-        private static char[] GenerateNew(int length)
-        {
-            var arr = new char[length];
-            var current = 'Z';
-            for (var i = arr.Length - 1; i > 0; i--)
-            {
-                arr[i] = current;
-                current = current == 'Z' ? 'A' : 'Z';
-            }
-            arr[0] = 'A';
-            return arr;
         }
 
         public static int Calculate(char[] carr)
