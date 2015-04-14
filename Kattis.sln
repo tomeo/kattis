@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "easiest", "easiest\easiest.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "billiard", "billiard\billiard.csproj", "{FF26B32E-0EF8-4DEC-A765-AAD8026BFAC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "trainpassengers", "trainpassengers\trainpassengers.csproj", "{0539A162-1310-488D-A69D-BA051B950CDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{FF26B32E-0EF8-4DEC-A765-AAD8026BFAC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF26B32E-0EF8-4DEC-A765-AAD8026BFAC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF26B32E-0EF8-4DEC-A765-AAD8026BFAC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0539A162-1310-488D-A69D-BA051B950CDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0539A162-1310-488D-A69D-BA051B950CDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0539A162-1310-488D-A69D-BA051B950CDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0539A162-1310-488D-A69D-BA051B950CDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
