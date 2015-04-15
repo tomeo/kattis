@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace trainpassengers
@@ -7,25 +8,28 @@ namespace trainpassengers
     {
         public static void Main(string[] args)
         {
-            var input = Console.ReadLine().Split(' ');
-            var c = int.Parse(input[0]);
-            var n = int.Parse(input[1]);
-            var onTrain = 0;
-            var possible = true;
-            for (var i = 0; i < n; i++)
+            var input = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+            var stations = new List<int[]>();
+            for (var i = 0; i < input[1]; i++)
             {
-                var train = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
-                onTrain = Math.Max(onTrain-train[0], 0);
-                onTrain += train[1];
-                if (onTrain > c)
-                {
-                    possible = false;
-                    break;
-                }
-                // 1 = entered
-                // 2 = stayed at station
+                stations.Add(Console.ReadLine().Split(' ').Select(int.Parse).ToArray());    
             }
-            Console.WriteLine(possible ? "possible" : "impossible");
+
+            Console.WriteLine(Solve(input[0], stations) ? "possible" : "impossible");
+        }
+
+        public static bool Solve(int c, IEnumerable<int[]> stations)
+        {
+            var passengers = 0;
+            foreach (var station in stations)
+            {
+                passengers = passengers - station[0];
+                if (passengers < 0) return false;
+                passengers += station[1];
+                if (passengers > c) return false;
+                if ((c - passengers) != 0 && station[2] != 0) return false;
+            }
+            return passengers == 0;
         }
     }
 }
