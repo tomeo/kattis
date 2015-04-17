@@ -49,6 +49,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "doorman", "doorman\doorman.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "erase", "erase\erase.csproj", "{22C872C0-DE77-4DFB-8B91-D36101D63522}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "timebomb", "timebomb\timebomb.csproj", "{834A2649-680C-448E-A19A-BDB35AE0775E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "catenyms", "catenyms\catenyms.csproj", "{3821326D-B018-4B34-8DA7-02299F68284D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -147,6 +151,14 @@ Global
 		{22C872C0-DE77-4DFB-8B91-D36101D63522}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22C872C0-DE77-4DFB-8B91-D36101D63522}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22C872C0-DE77-4DFB-8B91-D36101D63522}.Release|Any CPU.Build.0 = Release|Any CPU
+		{834A2649-680C-448E-A19A-BDB35AE0775E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{834A2649-680C-448E-A19A-BDB35AE0775E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{834A2649-680C-448E-A19A-BDB35AE0775E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{834A2649-680C-448E-A19A-BDB35AE0775E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3821326D-B018-4B34-8DA7-02299F68284D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3821326D-B018-4B34-8DA7-02299F68284D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3821326D-B018-4B34-8DA7-02299F68284D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3821326D-B018-4B34-8DA7-02299F68284D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
