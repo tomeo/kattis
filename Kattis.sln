@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "timebomb", "timebomb\timebo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "catenyms", "catenyms\catenyms.csproj", "{3821326D-B018-4B34-8DA7-02299F68284D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "judging", "judging\judging.csproj", "{007562C6-F58B-4FD9-A93F-577EDE5A93DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -159,6 +161,10 @@ Global
 		{3821326D-B018-4B34-8DA7-02299F68284D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3821326D-B018-4B34-8DA7-02299F68284D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3821326D-B018-4B34-8DA7-02299F68284D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{007562C6-F58B-4FD9-A93F-577EDE5A93DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{007562C6-F58B-4FD9-A93F-577EDE5A93DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{007562C6-F58B-4FD9-A93F-577EDE5A93DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{007562C6-F58B-4FD9-A93F-577EDE5A93DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
