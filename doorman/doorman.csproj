@@ -50,6 +50,7 @@
     <None Include="input\doorman.1.in" />
     <None Include="input\doorman.2.ans" />
     <None Include="input\doorman.2.in" />
+    <None Include="input\doorman.3.in" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
