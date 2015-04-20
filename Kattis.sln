@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "carrots", "carrots\carrots.csproj", "{59C44ECF-633F-4670-BAD8-95F74DF0251B}"
 EndProject
@@ -58,6 +58,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "anothercandies", "anothercandies\anothercandies.csproj", "{C912E1AC-B233-4219-AAAC-3C3BC8E2B28E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cookieselection", "cookieselection\cookieselection.csproj", "{B40A76C7-F580-4FAC-ACFF-57979BDB2FEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "quiteaproblem", "quiteaproblem\quiteaproblem.csproj", "{1AEB42AD-D985-4CC7-8C49-446D6DEE9AC8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -177,6 +179,10 @@ Global
 		{B40A76C7-F580-4FAC-ACFF-57979BDB2FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B40A76C7-F580-4FAC-ACFF-57979BDB2FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B40A76C7-F580-4FAC-ACFF-57979BDB2FEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AEB42AD-D985-4CC7-8C49-446D6DEE9AC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AEB42AD-D985-4CC7-8C49-446D6DEE9AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AEB42AD-D985-4CC7-8C49-446D6DEE9AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AEB42AD-D985-4CC7-8C49-446D6DEE9AC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
