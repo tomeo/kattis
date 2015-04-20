@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Numerics;
 
 namespace anothercandies
 {
@@ -6,15 +7,15 @@ namespace anothercandies
     {
         public static void Main(string[] args)
         {
-            var cases = Int64.Parse(Console.ReadLine());
-            for (var i = 0; i < cases; i++)
+            var cases = BigInteger.Parse(Console.ReadLine());
+            for (var c = 0; c < cases; c++)
             {
                 Console.ReadLine();
-                var kids = Int64.Parse(Console.ReadLine());
-                var sum = 0L;
-                for (var j = 0; j < kids; j++)
+                var kids = BigInteger.Parse(Console.ReadLine());
+                BigInteger sum = 0;
+                for (var kid = 0; kid < kids; kid++)
                 {
-                    sum += Int64.Parse(Console.ReadLine());
+                    sum += BigInteger.Parse(Console.ReadLine());
                 }
                 Console.WriteLine((sum % kids == 0) ? "YES" : "NO");
             }
