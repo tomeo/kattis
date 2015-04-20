@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 
 namespace cookieselection
 {
@@ -25,6 +23,22 @@ namespace cookieselection
         }
     }
 
+    public class MinCompare : IComparer<int>
+    {
+      public int Compare(int x, int y)
+      {
+          return x.CompareTo(y);
+      }
+    }
+
+    public class MaxCompare : IComparer<int>
+    {
+        public int Compare(int x, int y)
+        {
+            return y.CompareTo(x);
+        }
+    }
+
     public class CookieWarehouse
     {
         private BinaryHeap _min;
@@ -32,8 +46,8 @@ namespace cookieselection
 
         public CookieWarehouse()
         {
-            _min = new BinaryHeap();
-            _max = new BinaryHeap(Comparer<int>.Create((x, y) => y.CompareTo(x)));
+            _min = new BinaryHeap(new MinCompare());
+            _max = new BinaryHeap(new MaxCompare());
         }
 
         public void Insert(int element)
@@ -72,11 +86,6 @@ namespace cookieselection
             return _max.Count > _min.Count ? _max.RemoveRoot() : _min.RemoveRoot();
         }
 
-        public int PeekMedian()
-        {
-            return _max.Count > _min.Count ? _max.Peek() : _min.Peek();
-        }
-
         private void ShiftHeads()
         {
             if (_min.Count <= 0 || _max.Count <= 0) return;
@@ -91,40 +100,19 @@ namespace cookieselection
         {
             if (_max.Count - _min.Count > 1)
             {
-                var max = _max.RemoveRoot();
-                _min.Insert(max);
+                _min.Insert(_max.RemoveRoot());
             }
             else if (_min.Count - _max.Count > 1)
             {
-                var min = _min.RemoveRoot();
-                _max.Insert(min);
+                _max.Insert(_min.RemoveRoot());
             }
-        }
-
-        public override string ToString()
-        {
-            var sb = new StringBuilder();
-            sb.Append("min: ");
-            foreach (var value in _min)
-            {
-                sb.Append(value);
-                sb.Append(" ");
-            }
-            sb.Append("max: ");
-            foreach (var value in _max)
-            {
-                sb.Append(value);
-                sb.Append(" ");
-            }
-            return sb.ToString();
         }
     }
 
-    public class BinaryHeap : IEnumerable<int>
+    public class BinaryHeap
     {
         private readonly IComparer<int> _comparer;
         private List<int> _nodes = new List<int>();
-        public BinaryHeap() : this(Comparer<int>.Default) {}
 
         public BinaryHeap(IComparer<int> comp)
         {
@@ -132,16 +120,6 @@ namespace cookieselection
         }
         
         public int Count { get { return _nodes.Count; }}
-
-        public void Clear()
-        {
-            _nodes.Clear();
-        }
-        
-        public void TrimExcess()
-        {
-            _nodes.TrimExcess();
-        }
 
         public void Insert(int newItem)
         {
@@ -195,16 +173,6 @@ namespace cookieselection
                 _nodes[i] = tmp;
             }
             return rslt;
-        }
-
-        IEnumerator<int> IEnumerable<int>.GetEnumerator()
-        {
-            return ((IEnumerable<int>) _nodes).GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return ((IEnumerable<int>)_nodes).GetEnumerator();
         }
     }
 }
