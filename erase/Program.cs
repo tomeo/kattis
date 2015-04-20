@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace erase
 {
@@ -7,16 +8,18 @@ namespace erase
         public static void Main(string[] args)
         {
             var n = int.Parse(Console.ReadLine());
-            var before = Convert.ToInt32(Console.ReadLine(), 2);
-            var after = Convert.ToInt32(Console.ReadLine(), 2);
-            if (n%2 != 0)
+            var before = Console.ReadLine();
+            var after = Console.ReadLine();
+            Console.WriteLine(Verify(n, before, after) ? "Deletion succeeded" : "Deletion failed");
+        }
+
+        public static bool Verify(int n, string before, string after)
+        {
+            if (n%2 == 0)
             {
-                Console.WriteLine((before & after) == 0 ? "Deletion succeeded" : "Deletion failed");
+                return before == after;
             }
-            else
-            {
-                Console.WriteLine(before == after ? "Deletion succeeded" : "Deletion failed");
-            }
+            return !before.Where((t, i) => t == after[i]).Any();
         }
     }
 }
