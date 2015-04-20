@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 
 namespace cookieselection
 {
@@ -14,12 +15,11 @@ namespace cookieselection
             {
                 if (input == "#")
                 {
-                    Console.WriteLine("Shipping cookie with median {0}", warehouse.Median());
+                    Console.WriteLine(warehouse.GetAndRemoveMedian());
                 }
                 else
                 {
                     warehouse.Insert(int.Parse(input));
-                    warehouse.Rebalance();
                 }
             }
         }
@@ -27,188 +27,184 @@ namespace cookieselection
 
     public class CookieWarehouse
     {
-        // Every element in the min-heap is greater or equal to the median
-        private BinaryHeap<int> _min;
-        // Every element in the max-heap is less or equal to the median
-        private BinaryHeap<int> _max;
+        private BinaryHeap _min;
+        private BinaryHeap _max;
 
         public CookieWarehouse()
         {
-            _min = new BinaryHeap<int>();
-            _max = new BinaryHeap<int>(Comparer<int>.Create((x, y) => y.CompareTo(x)));
+            _min = new BinaryHeap();
+            _max = new BinaryHeap(Comparer<int>.Create((x, y) => y.CompareTo(x)));
         }
 
         public void Insert(int element)
         {
-            if (_min.Count == 0)
+            var median = Median();
+            if (_min.Count == 0 || element == _min.Peek())
             {
-                Console.WriteLine("Adding {0} to min", element);
                 _min.Insert(element);
-                return;
             }
-            if (_max.Count == 0)
+            else if (_max.Count == 0 || element == _max.Peek())
             {
-                Console.WriteLine("Adding {0} to max", element);
                 _max.Insert(element);
-                return;
             }
-            if (element == _min.Peek())
+            else if (!median.HasValue || element > median)
             {
-                Console.WriteLine("Adding duplicate {0} to min", element);
-                _min.Insert(element);
-                return;
-            }
-            if (element == _max.Peek())
-            {
-                Console.WriteLine("Adding duplicate {0} to max", element);
-                _max.Insert(element);
-                return;
-            }
-            int median;
-            if (_min.Count == _max.Count || _max.Count > _min.Count)
-            {
-                median = _max.Peek();
-            }
-            else
-            {
-                median = _min.Peek();
-            }
-            Console.WriteLine("Median is {0}", median);
-            if (element > median)
-            {
-                Console.WriteLine("Adding {0} to min", element);
                 _min.Insert(element);
             }
             else
             {
-                Console.WriteLine("Adding {0} to max", element);
                 _max.Insert(element);
             }
+            ShiftHeads();
+            Rebalance();
         }
 
-        public int Median()
+        private int? Median()
         {
-            if (_max.Count > _min.Count) return _max.RemoveRoot();
-            return _min.RemoveRoot();
+            if (_min.Count > _max.Count) return _min.Peek();
+            if (_max.Count > _min.Count) return _max.Peek();
+            if (_min.Count > 0 && _min.Count == _max.Count) return _min.Peek();
+            return null;
         }
 
-        public void Rebalance()
+        public int GetAndRemoveMedian()
         {
-            if (_min.Count > 0 && _min.Count == _max.Count)
-            {
-                if (_max.Peek() > _min.Peek())
-                {
-                    var min = _min.RemoveRoot();
-                    var max = _max.RemoveRoot();
-                    _min.Insert(max);
-                    _max.Insert(min);
-                    Console.WriteLine("Shifting {0} (min) with {1} (max)", min, max);
-                }
-            }
+            return _max.Count > _min.Count ? _max.RemoveRoot() : _min.RemoveRoot();
+        }
+
+        public int PeekMedian()
+        {
+            return _max.Count > _min.Count ? _max.Peek() : _min.Peek();
+        }
+
+        private void ShiftHeads()
+        {
+            if (_min.Count <= 0 || _max.Count <= 0) return;
+            if (_min.Peek() >= _max.Peek()) return;
+            var min = _min.RemoveRoot();
+            var max = _max.RemoveRoot();
+            _min.Insert(max);
+            _max.Insert(min);
+        }
+
+        private void Rebalance()
+        {
             if (_max.Count - _min.Count > 1)
             {
                 var max = _max.RemoveRoot();
-                Console.WriteLine("Moving {0} from max to min", max);
                 _min.Insert(max);
             }
             else if (_min.Count - _max.Count > 1)
             {
                 var min = _min.RemoveRoot();
-                Console.WriteLine("Moving {0} from min to max", min);
-                _max.Insert(_min.RemoveRoot());
+                _max.Insert(min);
             }
-            else
+        }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.Append("min: ");
+            foreach (var value in _min)
             {
-                Console.WriteLine("No rebalance needed");
+                sb.Append(value);
+                sb.Append(" ");
             }
+            sb.Append("max: ");
+            foreach (var value in _max)
+            {
+                sb.Append(value);
+                sb.Append(" ");
+            }
+            return sb.ToString();
         }
     }
 
-    public class BinaryHeap<T> : IEnumerable<T>
+    public class BinaryHeap : IEnumerable<int>
     {
-        private readonly IComparer<T> Comparer;
-        private List<T> Items = new List<T>();
-        public BinaryHeap() : this(Comparer<T>.Default) {}
+        private readonly IComparer<int> _comparer;
+        private List<int> _nodes = new List<int>();
+        public BinaryHeap() : this(Comparer<int>.Default) {}
 
-        public BinaryHeap(IComparer<T> comp)
+        public BinaryHeap(IComparer<int> comp)
         {
-            Comparer = comp;
+            _comparer = comp;
         }
         
-        public int Count { get { return Items.Count; }}
+        public int Count { get { return _nodes.Count; }}
 
         public void Clear()
         {
-            Items.Clear();
+            _nodes.Clear();
         }
         
         public void TrimExcess()
         {
-            Items.TrimExcess();
+            _nodes.TrimExcess();
         }
 
-        public void Insert(T newItem)
+        public void Insert(int newItem)
         {
             var i = Count;
-            Items.Add(newItem);
-            while (i > 0 && Comparer.Compare(Items[(i - 1) / 2], newItem) > 0)
+            _nodes.Add(newItem);
+            while (i > 0 && _comparer.Compare(_nodes[(i - 1) / 2], newItem) > 0)
             {
-                Items[i] = Items[(i - 1) / 2];
+                _nodes[i] = _nodes[(i - 1) / 2];
                 i = (i - 1) / 2;
             }
-            Items[i] = newItem;
+            _nodes[i] = newItem;
         }
 
-        public T Peek()
+        public int Peek()
         {
-            if (Items.Count == 0)
+            if (_nodes.Count == 0)
             {
-                throw new InvalidOperationException("The heap is empty.");
+                return -1;
             }
-            return Items[0];
+            return _nodes[0];
         }
         
-        public T RemoveRoot()
+        public int RemoveRoot()
         {
-            if (Items.Count == 0)
+            if (_nodes.Count == 0)
             {
-                throw new InvalidOperationException("The heap is empty.");
+                return -1;
             }
             // Get the first item
-            T rslt = Items[0];
+            var rslt = _nodes[0];
             // Get the last item and bubble it down.
-            T tmp = Items[Items.Count - 1];
-            Items.RemoveAt(Items.Count - 1);
-            if (Items.Count > 0)
+            var tmp = _nodes[_nodes.Count - 1];
+            _nodes.RemoveAt(_nodes.Count - 1);
+            if (_nodes.Count > 0)
             {
                 var i = 0;
-                while (i < Items.Count / 2)
+                while (i < _nodes.Count / 2)
                 {
                     var j = (2 * i) + 1;
-                    if ((j < Items.Count - 1) && (Comparer.Compare(Items[j], Items[j + 1]) > 0))
+                    if ((j < _nodes.Count - 1) && (_comparer.Compare(_nodes[j], _nodes[j + 1]) > 0))
                     {
                         ++j;
                     }
-                    if (Comparer.Compare(Items[j], tmp) >= 0)
+                    if (_comparer.Compare(_nodes[j], tmp) >= 0)
                     {
                         break;
                     }
-                    Items[i] = Items[j];
+                    _nodes[i] = _nodes[j];
                     i = j;
                 }
-                Items[i] = tmp;
+                _nodes[i] = tmp;
             }
             return rslt;
         }
 
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        IEnumerator<int> IEnumerable<int>.GetEnumerator()
         {
-            return ((IEnumerable<T>) Items).GetEnumerator();
+            return ((IEnumerable<int>) _nodes).GetEnumerator();
         }
 
-        public IEnumerator GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return ((IEnumerable<int>)_nodes).GetEnumerator();
         }
     }
 }
