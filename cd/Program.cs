@@ -7,37 +7,22 @@ namespace cd
     {
         public static void Main(string[] args)
         {
-            var inputs = Console.ReadLine().Split(' ');
-            var n = int.Parse(inputs[0]);
-            var m = int.Parse(inputs[1]);
+            string input;
+            while ((input = Console.ReadLine()) != null)
+            {
+                var nm = input.Split(' ');
+                Console.WriteLine(Solve(long.Parse(nm[0]), long.Parse(nm[1])));
+                Console.ReadLine();
+            }
+        }
+
+        public static int Solve(long n, long m)
+        {
             var jack = new HashSet<string>();
+            for (var i = 0; i < n; i++) jack.Add(Console.ReadLine());
             var sum = 0;
-            for (var i = 0; i < n; i++)
-            {
-                var cd = Console.ReadLine();
-                if (!jack.Contains(cd))
-                {
-                    jack.Add(cd);
-                }
-                else
-                {
-                    sum++;
-                }
-            }
-            var jill = new HashSet<string>();
-            for (var i = 0; i < m; i++)
-            {
-                var cd = Console.ReadLine();
-                if (jack.Contains(cd) || jill.Contains(cd))
-                {
-                    sum++;
-                }
-                else
-                {
-                    jill.Add(cd);
-                }
-            }
-            Console.WriteLine(sum);
+            for (var i = 0; i < m; i++) if (jack.Contains(Console.ReadLine())) sum++;
+            return sum;
         }
     }
 }
